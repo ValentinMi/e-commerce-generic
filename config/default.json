@@ -1,0 +1,5 @@
+{
+  "db": "mongodb://localhost/e-commerce",
+  "jwtPrivateKey": "unsecureKey",
+  "requiresAuth": true
+}
