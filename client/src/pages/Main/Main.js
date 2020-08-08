@@ -4,6 +4,7 @@ import { Box } from "@chakra-ui/core";
 import { getProducts } from "../../api/products.api";
 
 import Board from "../../components/Board/Board";
+import { colors } from "../../style/colors";
 
 const Main = () => {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,7 @@ const Main = () => {
       d="flex"
       justifyContent="center"
       alignItems="center"
-      bg="tomato"
+      bg="#D2DEEF"
     >
       <Board products={products} />
     </Box>
