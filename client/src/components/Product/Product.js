@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Text, Button, Image } from "@chakra-ui/core";
-import { colors } from "../../style/colors";
+import { Box, Text, Image } from "@chakra-ui/core";
 import NeuButton from "../NeuButton/NeuButton";
 
 const Product = ({ product }) => {

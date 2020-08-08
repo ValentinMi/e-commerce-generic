@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Box, Grid } from "@chakra-ui/core";
 import Product from "../Product/Product";
-import { colors } from "../../style/colors";
+import { getProducts } from "../../api/products.api";
+import BoardToolbar from "./BoardToolbar/BoardToolbar";
 
-const Board = ({ products }) => {
+const Board = () => {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState(null);
+
+  const fetchData = useCallback(async () => {
+    const products = await getProducts();
+    console.log(products);
+    setProducts(products);
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
-    <Box width="85%" height="85%" d="flex">
+    <Box
+      width="90%"
+      height="85%"
+      d="flex"
+      flexDirection="column"
+      alignItems="center"
+    >
+      <BoardToolbar
+        products={products}
+        setFilteredProducts={setFilteredProducts}
+      />
       <Grid
         templateColumns={[
           "repeat(1, 1fr)",
@@ -15,9 +39,14 @@ const Board = ({ products }) => {
         ]}
         width="100%"
       >
-        {products.map((product, idx) => (
-          <Product key={`product${idx}`} product={product} />
-        ))}
+        {/* Display all products or filtered one */}
+        {!filteredProducts
+          ? products.map((product, idx) => (
+              <Product key={`product${idx}`} product={product} />
+            ))
+          : filteredProducts.map((product, idx) => (
+              <Product key={`product${idx}`} product={product} />
+            ))}
       </Grid>
     </Box>
   );

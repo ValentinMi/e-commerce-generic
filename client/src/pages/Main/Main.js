@@ -1,24 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React from "react";
 import { Box } from "@chakra-ui/core";
 
-import { getProducts } from "../../api/products.api";
-
 import Board from "../../components/Board/Board";
-import { colors } from "../../style/colors";
 
 const Main = () => {
-  const [products, setProducts] = useState([]);
-
-  const fetchData = useCallback(async () => {
-    const products = await getProducts();
-    console.log(products);
-    setProducts(products);
-  }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-
   return (
     <Box
       width="100vw"
@@ -28,7 +13,7 @@ const Main = () => {
       alignItems="center"
       bg="#D2DEEF"
     >
-      <Board products={products} />
+      <Board />
     </Box>
   );
 };
