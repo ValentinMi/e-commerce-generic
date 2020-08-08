@@ -20,6 +20,12 @@ const Product = mongoose.model(
       minlength: 2,
       maxlength: 1055,
       required: true
+    },
+    imgUrl: {
+      type: String,
+      minlength: 1,
+      maxlength: 255,
+      required: true
     }
   })
 );
