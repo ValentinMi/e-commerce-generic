@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <Box
       width="100vw"
-      height="100vh"
+      height="100%"
       d="flex"
       justifyContent="center"
       alignItems="center"

@@ -6,11 +6,10 @@ import BoardToolbar from "./BoardToolbar/BoardToolbar";
 
 const Board = () => {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const fetchData = useCallback(async () => {
     const products = await getProducts();
-    console.log(products);
     setProducts(products);
   }, []);
 
@@ -19,25 +18,21 @@ const Board = () => {
   }, [fetchData]);
 
   return (
-    <Box
-      width="90%"
-      height="85%"
-      d="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
+    <Box height="85%" m={6} d="flex" flexDirection="column" alignItems="center">
       <BoardToolbar
         products={products}
+        filteredProducts={filteredProducts}
         setFilteredProducts={setFilteredProducts}
       />
       <Grid
         templateColumns={[
-          "repeat(1, 1fr)",
-          "repeat(2, 1fr)",
-          "repeat(3, 1fr)",
-          "repeat(5, 1fr)"
+          "repeat(1, 250px)",
+          "repeat(2, 250px)",
+          "repeat(3, 250px)",
+          "repeat(5, 250px)"
         ]}
-        width="100%"
+        gap={6}
+        mt={5}
       >
         {/* Display all products or filtered one */}
         {!filteredProducts

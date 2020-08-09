@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Text, Image } from "@chakra-ui/core";
-import NeuButton from "../NeuButton/NeuButton";
+import { Box, Text, Image, Button } from "@chakra-ui/core";
 
 const Product = ({ product }) => {
   const HOST_IMG_BASE_URL = "http://localhost:8000";
@@ -11,13 +10,15 @@ const Product = ({ product }) => {
       flexDirection="column"
       justifyContent="space-around"
       alignItems="center"
-      m={4}
       borderWidth="1px"
       borderStyle="solid"
       borderColor="white"
       boxShadow="0px 30px 60px 0px rgba(0,0,0,0.35), 0px -30px 60px 0px rgba(248,252,255,0.5)"
       borderRadius="12px"
       bg="#EAF0F8"
+      maxWidth="250px"
+      p={2}
+      cursor="pointer"
     >
       <Image
         src={imgSrc}
@@ -29,7 +30,9 @@ const Product = ({ product }) => {
       <Text>{product.name}</Text>
       {/* <Text>{product.description}</Text> */}
       <Text>{product.price} €</Text>
-      <NeuButton label="Add to cart" />
+      <Button variantColor="green" leftIcon="add">
+        Add to cart
+      </Button>
     </Box>
   );
 };
